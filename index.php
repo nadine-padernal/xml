@@ -4,7 +4,7 @@
 
 <h2>Using the XMLHttpRequest Object</h2>
 
-<div id="demo">
+<div id="rss">
 </div>
 
 <script>
@@ -12,14 +12,13 @@ function loadXMLDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
+      document.getElementById("rss").innerHTML =
       this.responseText;
     }
   };
-  xhttp.open("GET", "emails.xml", true);
+  xhttp.open("GET", "rss-cnn.php", true);
   xhttp.send();
 }
-  <a href="rss-cnn.php"> RSS FEED </a>
 </script>
 </body>
 </html>
