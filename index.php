@@ -19,6 +19,7 @@ function loadXMLDoc() {
   xhttp.open("GET", "emails.xml", true);
   xhttp.send();
 }
+  <a href="rss-cnn.php"> RSS FEED </a>
 </script>
 </body>
 </html>
