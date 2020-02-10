@@ -11,10 +11,10 @@
         extract($r);
         
         $rss .= '<pets>';
-        $rss .= '<name>' . $mus_title . '</name>';
-        $rss .= '<sciname>' . $mus_artist . '</sciname>';
-        $rss .= '<lifespan>' . $mus_genre . '</lifespan>';
-        $rss .= '<family>' . $mus_writer . '</family>';
+        $rss .= '<name>' . $name . '</name>';
+        $rss .= '<sciname>' . $sciname . '</sciname>';
+        $rss .= '<lifespan>' . $lifespan . '</lifespan>';
+        $rss .= '<family>' . $family . '</family>';
         $rss .= '</pets>';
     }
     $rss .= '</channel>';
