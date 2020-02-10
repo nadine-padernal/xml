@@ -1,24 +1,24 @@
 <?php
  $domOBJ = new DOMDocument();
- $domOBJ->load("https://xmlfaus.herokuapp.com/rssf.php");//XML page URL
+ $domOBJ->load("https://xmlfaus.herokuapp.com/rss-cnn.php");
  
- $content = $domOBJ->getElementsByTagName("music");
+ $cnt = $domOBJ->getElementsByTagName("pets");
 ?>
 
- <h1>Top 5 Music 2019</h1>
+ <h2> Top 5 Best Pets</h2>
 
 <?php
- foreach( $content as $data ){
-     $mus_title = $data->getElementsByTagName("mus_title")->item(0)->nodeValue;
-     $mus_artist = $data->getElementsByTagName("mus_artist")->item(0)->nodeValue;
-     $mus_genre = $data->getElementsByTagName("mus_genre")->item(0)->nodeValue;
-     $mus_writer = $data->getElementsByTagName("mus_writer")->item(0)->nodeValue;
+ foreach( $cnt as $data ){
+     $name = $data->getElementsByTagName("name")->item(0)->nodeValue;
+     $sciname = $data->getElementsByTagName("sciname")->item(0)->nodeValue;
+     $lifespan = $data->getElementsByTagName("lifespan")->item(0)->nodeValue;
+     $family = $data->getElementsByTagName("family")->item(0)->nodeValue;
      echo "<ul>
-            <h2>$mus_title</h2>
+            <h3>$name</h3>
               <ul>
-                  <li>Artist: $mus_artist </li>
-                  <li>Genre: $mus_genre </li>
-                  <li>Writer: $mus_writer </li>
+                  <li>Scientific Name: $sciname </li>
+                  <li>Average Lifespan: $lifespan </li>
+                  <li>Family: $family </li>
               </ul>
           </ul>";
  }
