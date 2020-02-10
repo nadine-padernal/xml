@@ -1,23 +1,24 @@
 <?php
- $domOBJ = new DOMDocument();
- $domOBJ->load("http://feeds.bbci.co.uk/news/world/asia/rss.xml");//XML page URL
- 
- $content = $domOBJ->getElementsByTagName("item");
- 
- ?>
- <ul>
-    <?php
- foreach( $content as $data )
- {
-   $title = $data->getElementsByTagName("title")->item(0)->nodeValue;
-   $link = $data->getElementsByTagName("link")->item(0)->nodeValue;
-   $date = $data->getElementsByTagName("pubDate")->item(0)->nodeValue;
-  
-   echo "<li>$title...$date
-            <ul>
-                <li>$link</li>
-            </ul>
-        </li>";
- }
+    $rss = '<?xml version="1.0" encoding="UTF-8"?>';
+    $rss .= '<rss version="2.0">';
+    $rss .= '<channel>';
+
+    $con = mysqli_connect("dbrojasdev.cjw42bnplsor.us-east-1.rds.amazonaws.com", "admin", "root1234", "db_1820804") or die (mysqli_error($con));
+    $sql = "SELECT * FROM tbl_pets";
+    $q = mysqli_query($con, $sql) or die (mysqli_error($con));
+
+    while($r= mysqli_fetch_assoc($q)){
+        extract($r);
+        
+        $rssf .= '<pets>';
+        $rssf .= '<name>' . $mus_title . '</name>';
+        $rssf .= '<sciname>' . $mus_artist . '</sciname>';
+        $rssf .= '<lifespan>' . $mus_genre . '</lifespan>';
+        $rssf .= '<family>' . $mus_writer . '</family>';
+        $rssf .= '</pets>';
+    }
+    $rss .= '</channel>';
+    $rss .= '</rss>';
+
+    echo $rss;
 ?>
-</ul>
